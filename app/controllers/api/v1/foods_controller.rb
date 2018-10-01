@@ -1,5 +1,5 @@
 class Api::V1::FoodsController < ApplicationController
   def index
-    render json: FoodsPresenter.to_json
+    render json: FoodsPresenter.jsonable_hash
   end
 end
