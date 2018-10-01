@@ -1,15 +1,16 @@
 require 'rails_helper'
 
 describe FoodsPresenter do
-  context 'instance methods' do
+  context 'class methods' do
+    it '.jsonable_hash - returns an array of all foods in db' do
+      food_1 = create(:food)
+      food_2 = create(:food)
+      jsonable_hash = FoodsPresenter.jsonable_hash
 
-    let (:foods) { create_list(:food, 10) } 
-
-    it '.all - returns an array of all foods in db' do
-      presenter = FoodsPresenter.new
-      expect(presenter.all).to be_an(Array)
-      expect(presenter.all.count).to eq(10)
-      expect(presenter.all[5]).to be_a(Food)
+      expect(jsonable_hash).to be_an(Array)
+      expect(jsonable_hash.count).to eq(2)
+      expect(jsonable_hash.first[:name]).to eq(food_1.name)
+      expect(jsonable_hash.first[:id]).to eq(food_1.id)
     end
   end
 end

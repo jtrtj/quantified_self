@@ -6,7 +6,7 @@ describe '/api/v1' do
     it 'returns a json object with all foods in the database' do
       get '/api/v1/foods'
       result = JSON.parse(response.body)
-
+      byebug
       expect(result.count).to eq(2)
       expect(result.first).to have_key("name") 
       expect(result.first).to have_key("calories") 
