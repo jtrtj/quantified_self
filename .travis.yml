@@ -4,4 +4,6 @@ rvm:
 env:
   - DB=postgresql
 script:
+  - bundle install
+  - rails db:{create,migrate}
   - bundle exec rspec
