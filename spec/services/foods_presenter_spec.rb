@@ -9,8 +9,9 @@ describe FoodsPresenter do
 
       expect(jsonable_hash).to be_an(Array)
       expect(jsonable_hash.count).to eq(2)
-      expect(jsonable_hash.first[:name]).to eq(food_1.name)
       expect(jsonable_hash.first[:id]).to eq(food_1.id)
+      expect(jsonable_hash.first[:name]).to eq(food_1.name)
+      expect(jsonable_hash.first[:calories]).to eq(food_1.calories)
     end
   end
 end

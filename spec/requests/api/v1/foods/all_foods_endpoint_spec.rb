@@ -7,8 +7,9 @@ describe '/api/v1' do
 
       get '/api/v1/foods'
       result = JSON.parse(response.body)
-      byebug
-      expect(result.count).to eq(2)
+
+      expect(result.count).to eq(10)
+      expect(result.first).to have_key("id") 
       expect(result.first).to have_key("name") 
       expect(result.first).to have_key("calories") 
     end
