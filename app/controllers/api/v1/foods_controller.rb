@@ -12,6 +12,6 @@ class Api::V1::FoodsController < ApplicationController
   private
 
   def food_params
-    params.permi(:id)
+    params.permit(:id)
   end
 end
