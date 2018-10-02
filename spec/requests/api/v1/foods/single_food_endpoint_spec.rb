@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'api/v1' do
+describe '/api/v1' do
   context 'Get /foods/:id' do
     it "returns a json object containing a single food's data" do
       food_1 = create(:food)
