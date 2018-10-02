@@ -7,6 +7,6 @@ class Food < ApplicationRecord
   end
 
   def self.find_a_food(id)
-    Food.find(id)
+    Food.find_by_id(id)
   end
 end

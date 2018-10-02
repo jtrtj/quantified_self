@@ -5,13 +5,24 @@ class FoodPresenter
   end
 
   def jsonable_hash
-    {
-      id:       food.id,
-      name:     food.name,
-      calories: food.calories
-    }
+    if food
+      {
+        id:       food.id,
+        name:     food.name,
+        calories: food.calories
+      }
+    else
+      { error: "food not found" }
+    end
   end
 
+  def status
+    if food
+      200
+    else
+      404
+    end
+  end
   private
 
   def food

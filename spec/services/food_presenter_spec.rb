@@ -21,5 +21,20 @@ describe FoodPresenter do
       expect(jsonable_hash[:name]).to eq(food_1.name)
       expect(jsonable_hash[:calories]).to eq(food_1.calories)
     end
+
+    it '#status - returns status 200 if food found, 404 if not.' do
+      food_1 = create(:food)
+      food_params = {id: "#{food_1.id}"}
+      presenter = FoodPresenter.new(food_params)
+      status = presenter.status
+
+      expect(status).to eq(200)
+
+      bad_params = { id: 3456789 }
+      presenter = FoodPresenter.new(bad_params)
+      status = presenter.status
+
+      expect(status).to eq(404)
+    end
   end
 end

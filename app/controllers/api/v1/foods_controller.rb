@@ -6,7 +6,7 @@ class Api::V1::FoodsController < ApplicationController
   def show
     food_presenter = FoodPresenter.new(food_params)
     render json:   food_presenter.jsonable_hash,
-           status: food_presenter.message
+           status: food_presenter.status
   end
 
   private
