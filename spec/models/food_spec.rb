@@ -15,5 +15,13 @@ RSpec.describe Food, type: :model do
       expect(all_foods.count).to eq(2)
       expect(all_foods.first).to be_a(Food)
     end
+
+    it '.find_a_food - returns a single food' do
+      food_1 = create(:food)
+      food_2 = create(:food)
+
+      found_food = Food.find_a_food(food_1.id)
+      expect(found_food).to eq(food_1)
+    end
   end
 end

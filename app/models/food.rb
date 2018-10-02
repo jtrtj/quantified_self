@@ -5,4 +5,8 @@ class Food < ApplicationRecord
   def self.fetch_all
     Food.all.to_a
   end
+
+  def self.find_a_food(id)
+    Food.find(id)
+  end
 end
