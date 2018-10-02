@@ -6,9 +6,9 @@ class FoodPresenter
 
   def jsonable_hash
     {
-      id: food.id,
-      id: food.name,
-      id: food.calories
+      id:       food.id,
+      name:     food.name,
+      calories: food.calories
     }
   end
 
