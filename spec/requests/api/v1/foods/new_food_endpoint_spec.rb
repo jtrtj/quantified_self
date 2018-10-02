@@ -10,7 +10,7 @@ describe '/api/v1' do
       post '/api/v1/foods', params: parameters
       status = response.status
       result = JSON.parse(response.body)
-      # byebug
+
       expect(status).to eq(200)
       expect(result).to have_key("id")
       expect(result["name"]).to eq(parameters[:"food"][:"name"])
