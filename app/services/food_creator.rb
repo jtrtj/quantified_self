@@ -18,7 +18,7 @@ class FoodCreator
   end
 
   def status
-    if food
+    if @name && @calories
       200
     else
       400

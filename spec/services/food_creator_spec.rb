@@ -20,7 +20,7 @@ describe FoodCreator do
       params = { name: food_name, calories: food_calories }
       creator = FoodCreator.new(params)
       result = creator.result
-
+      
       expect(result).to have_key(:id)
       expect(result).to have_key(:name)
       expect(result).to have_key(:calories)
