@@ -10,9 +10,15 @@ class Api::V1::FoodsController < ApplicationController
   end
 
   def create
-    food_creator = FoodCreator.new(new_food_params)
+    food_creator = FoodCreator.new(food_attribute_params)
     render json:   food_creator.result,
            status: food_creator.status
+  end
+
+  def update
+    food_updater = FoodUpdater.new(food_attribute_params)
+    render json:   food_updater.result,
+           status: food_updater.status
   end
 
   private
@@ -21,7 +27,7 @@ class Api::V1::FoodsController < ApplicationController
     params.permit(:id)
   end
 
-  def new_food_params
+  def food_attribute_params
     params.require(:food).permit(:name, :calories)
   end
 end
