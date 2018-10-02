@@ -23,5 +23,16 @@ RSpec.describe Food, type: :model do
       found_food = Food.find_a_food(food_1.id)
       expect(found_food).to eq(food_1)
     end
+
+    it '.create_new_food(name, calories) - adds a new food to the database and returns that food' do
+      name = Faker::Hipster.word
+      calories = Faker::Number.number(3).to_i
+
+      new_food = Food.create_new_food(name, calories)
+      
+      expect(new_food.name).to eq(name)
+      expect(new_food.calories).to eq(calories)
+      expect(new_food.id).to_not be(nil)
+    end
   end
 end

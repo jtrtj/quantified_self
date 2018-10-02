@@ -23,6 +23,7 @@ class FoodPresenter
       404
     end
   end
+  
   private
 
   def food

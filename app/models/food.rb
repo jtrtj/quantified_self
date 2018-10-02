@@ -9,4 +9,11 @@ class Food < ApplicationRecord
   def self.find_a_food(id)
     Food.find_by_id(id)
   end
+
+  def self.create_new_food(name, calories)
+    new_food = Food.create(
+                            name:     name,
+                            calories: calories
+                          )
+  end
 end
