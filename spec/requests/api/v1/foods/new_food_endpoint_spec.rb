@@ -16,5 +16,18 @@ describe '/api/v1' do
       expect(result["name"]).to eq(parameters[:"food"][:"name"])
       expect(result["calories"]).to eq(parameters[:"food"][:"calories"].to_i)
     end
+
+    it 'will return status 400 if parameters are invalid' do
+      food_name = Faker::Hipster.word
+      food_calories = Faker::Number.number(3)
+      parameters = { "food": { "calories": food_calories } }
+
+      post '/api/v1/foods', params: parameters
+      status = response.status
+      result = JSON.parse(response.body)
+
+      expect(status).to eq(400)
+      expect(result["error"]).to eq("invalid parameters")
+    end
   end
 end
