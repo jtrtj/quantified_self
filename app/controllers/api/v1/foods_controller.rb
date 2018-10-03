@@ -17,14 +17,14 @@ class Api::V1::FoodsController < ApplicationController
 
   def update
     food_updater = FoodUpdater.new(food_params, food_attribute_params)
-    render json: food_updater.result,
+    render json:   food_updater.result,
            status: food_updater.status
   end
 
   def destroy
     food_destroyer = FoodDestroyer.new(food_params)
-    render json:   food_destroyer.result,
-           status: food_destroyer.status
+    render json: {},
+           status: food_destroyer.run
   end
 
   private

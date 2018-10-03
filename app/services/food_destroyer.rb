@@ -4,11 +4,11 @@ class FoodDestroyer
     @id = food_params[:id]
   end
 
-  def result
+  def run
     if destroy_a_food
-      { message: "food with id #{food.id} has been deleted" }
+      204
     else
-      { error: "food cannot be found" }
+      404
     end
   end
 
@@ -20,7 +20,8 @@ class FoodDestroyer
 
   def destroy_a_food
     if food
-      Food.destroy_a_food(@food)
+      Food.destroy_a_food(food)
+      true
     else
       false
     end

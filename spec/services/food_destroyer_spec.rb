@@ -12,13 +12,13 @@ describe FoodDestroyer do
   end
 
   context 'instance methods' do
-    it '#result - destroys the food and returns a message' do
+    it '#run - destroys the food and returns a message' do
       food_to_destroy = create(:food)
       food_params = { id: food_to_destroy.id }
       destroyer = FoodDestroyer.new(food_params)
-      result = destroyer.result
+      destroy = destroyer.run
 
-      expect(result).to have_key(:message)
+      expect(destroy).to eq(204)
     end
   end
 end

@@ -6,9 +6,9 @@ describe '/api/v1' do
       food_to_be_deleted = create(:food)
 
       delete "/api/v1/foods/#{food_to_be_deleted.id}"
-      result = JSON.parse(response.body)
+    
       expect(status).to eq(204)
-      expect(result["message"]).to eq("food with id #{food_to_be_deleted.id} has been deleted")
+      # expect(result["message"]).to eq("food with id #{food_to_be_deleted.id} has been deleted")
     end
   end
 end

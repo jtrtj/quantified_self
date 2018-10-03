@@ -12,7 +12,7 @@ class FoodPresenter
         calories: food.calories
       }
     else
-      { error: "food not found" }
+      { error: 'food not found' }
     end
   end
 
