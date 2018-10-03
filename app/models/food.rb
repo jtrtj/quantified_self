@@ -3,7 +3,7 @@ class Food < ApplicationRecord
                         :calories
 
   def self.fetch_all
-    Food.all.to_a
+    Food.all
   end
 
   def self.find_a_food(id)
