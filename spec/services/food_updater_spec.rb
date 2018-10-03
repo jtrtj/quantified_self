@@ -9,12 +9,11 @@ describe FoodUpdater do
                                  calories: Faker::Number.number(3) 
                                 }
       
-      
       food_updater = FoodUpdater.new(food_id, food_attributes_update)
-
+      
       expect(food_updater.id).to eq(food_id)
       expect(food_updater.new_name).to eq(food_attributes_update[:name])
-      expect(food_updater.new_calorie_count).to eq(food_attributes_update[:calorie_count])
+      expect(food_updater.new_calorie_count).to eq(food_attributes_update[:calories])
     end
   end
 end
