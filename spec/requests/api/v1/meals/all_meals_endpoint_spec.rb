@@ -5,20 +5,23 @@ describe '/api/v1' do
     it 'will return all the meals in the database along with their foods' do
       meals = create_list(:meal, 3)
       foods = create_list(:food, 10)
-      create_list(:meal_food, 15, meal: meals.sample, food: foods.sample)
-      
+      15.times do 
+        create(:meal_food, meal: meals.sample, food: foods.sample)
+      end
+
       get '/api/v1/meals'
       result = JSON.parse(response.body)
-
+      # byebug
+      
       expect(result).to be_an(Array)
       expect(result.count).to be >= 1
-      expect(result.first).to have_key(:"id")
-      expect(result.first).to have_key(:"name")
-      expect(result.first).to have_key(:"foods")
-      expect(result.last[:"foods"]).to be_an(Array)
-      expect(result.last[:"foods"].first).to have_key(:"id")
-      expect(result.last[:"foods"].first).to have_key(:"name")
-      expect(result.last[:"foods"].first).to have_key(:"calories")
+      expect(result.first).to have_key("id")
+      expect(result.first).to have_key("name")
+      expect(result.first).to have_key("foods")
+      expect(result.last["foods"]).to be_an(Array)
+      expect(result.last["foods"].first).to have_key("id")
+      expect(result.last["foods"].first).to have_key("name")
+      expect(result.last["foods"].first).to have_key("calories")
     end
   end
 end

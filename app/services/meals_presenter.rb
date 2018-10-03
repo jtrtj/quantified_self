@@ -4,13 +4,13 @@ class MealsPresenter
       {
         id:    meal.id,
         name:  meal.name,
-        foods: foods_array(meal.foods)
+        foods: foods_array(meal)
       }
     end
   end
 
-  def foods_array(foods)
-    self.foods.map do |food|
+  def foods_array(meal)
+    meal.foods.map do |food|
       {
         id:       food.id,
         name:     food.name,
