@@ -11,7 +11,7 @@ describe '/api/v1' do
       result = JSON.parse(response.body)
 
       expect(result).to be_an(Array)
-      expect(result.count).to eq(3)
+      expect(result.count).to be >= 1
       expect(result.first).to have_key(:"id")
       expect(result.first).to have_key(:"name")
       expect(result.first).to have_key(:"foods")
