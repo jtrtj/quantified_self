@@ -6,8 +6,8 @@ describe '/api/v1' do
       meals = create_list(:meal, 3)
       foods = create_list(:food, 10)
       create_list(:meal_food, 15, meal: meals.sample, food: foods.sample)
-  
-      get 'api/v1/meals'
+      
+      get '/api/v1/meals'
       result = JSON.parse(response.body)
 
       expect(result).to be_an(Array)
