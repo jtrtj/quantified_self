@@ -16,8 +16,8 @@ class Api::V1::FoodsController < ApplicationController
   end
 
   def update
-    food_updater = FoodUpdater.new(food_attribute_params)
-    render json:   food_updater.result,
+    food_updater = FoodUpdater.new(food_params, food_attribute_params)
+    render json: food_updater.result,
            status: food_updater.status
   end
 
@@ -30,4 +30,5 @@ class Api::V1::FoodsController < ApplicationController
   def food_attribute_params
     params.require(:food).permit(:name, :calories)
   end
+
 end
