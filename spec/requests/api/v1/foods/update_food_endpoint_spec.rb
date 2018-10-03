@@ -10,11 +10,23 @@ describe '/api/v1' do
 
       patch "/api/v1/foods/#{food_to_be_updated.id}", params: parameters
       result = JSON.parse(response.body)
-      
+
       expect(status).to eq(200)
       expect(result["id"]).to eq(food_to_be_updated.id)
       expect(result["name"]).to eq(parameters[:"food"][:"name"])
       expect(result["calories"]).to eq(parameters[:"food"][:"calories"].to_i)
+    end
+
+    it 'will return status code 400 if update was not successfull' do
+      food_to_be_updated = create(:food)
+      food_calories_update = Faker::Number.number(3)
+      parameters = { "food": { "calories": food_calories_update } }
+
+      patch "/api/v1/foods/#{food_to_be_updated.id}", params: parameters
+      result = JSON.parse(response.body)
+
+      expect(status).to eq(400)
+      expect(result["error"]).to eq("invalid parameters")
     end
   end
 end
