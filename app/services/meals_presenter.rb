@@ -10,7 +10,7 @@ class MealsPresenter
   end
 
   def foods_array(foods)
-    foods.map do |food|
+    self.foods.map do |food|
       {
         id:       food.id,
         name:     food.name,
@@ -22,6 +22,6 @@ class MealsPresenter
   private
 
   def fetched_meals
-    AllMealsFetcher.fetch
+    Meal.all
   end
 end
