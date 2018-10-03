@@ -21,6 +21,12 @@ class Api::V1::FoodsController < ApplicationController
            status: food_updater.status
   end
 
+  def destroy
+    food_destroyer = FoodDestroyer.new(food_params)
+    render json:   food_destroyer.result,
+           status: food_destroyer.status
+  end
+
   private
 
   def food_params
@@ -30,5 +36,4 @@ class Api::V1::FoodsController < ApplicationController
   def food_attribute_params
     params.require(:food).permit(:name, :calories)
   end
-
 end
