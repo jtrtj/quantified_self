@@ -9,7 +9,8 @@ describe '/api/v1' do
       parameters = { "food": { "name": food_name_update, "calories": food_calories_update } }
 
       patch "/api/v1/foods/#{food_to_be_updated.id}", params: parameters
-
+      result = JSON.parse(response.body)
+      
       expect(status).to eq(200)
       expect(result["id"]).to eq(food_to_be_updated.id)
       expect(result["name"]).to eq(parameters[:"food"][:"name"])

@@ -30,5 +30,4 @@ class FoodCreator
   def new_food
     @new_food ||= Food.create_new_food(@name, @calories)
   end
-
 end

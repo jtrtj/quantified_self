@@ -35,4 +35,17 @@ RSpec.describe Food, type: :model do
       expect(new_food.id).to_not be(nil)
     end
   end
+
+  context 'instance methods' do
+    it '#update_a_food(new_name, new_calorie_count)' do
+      food_to_be_updated = create(:food)
+      new_name = Faker::Hipster.word
+      new_calorie_count = Faker::Number.number(3)
+
+      updated_food = food_to_be_updated.update_a_food(new_name, new_calorie_count)
+
+      expect(updated_food.name).to eq(new_name)
+      expect(updated_food.calories).to eq(new_calorie_count.to_i)
+    end
+  end
 end

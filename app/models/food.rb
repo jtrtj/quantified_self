@@ -16,4 +16,10 @@ class Food < ApplicationRecord
                             calories: calories
                           )
   end
+
+  def update_a_food(new_name, new_calorie_count)
+    updated_food = Food.find_by_id(self.id)
+    updated_food.update(name: new_name, calories: new_calorie_count)
+    updated_food
+  end
 end
