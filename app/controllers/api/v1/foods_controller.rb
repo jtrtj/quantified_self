@@ -23,8 +23,9 @@ class Api::V1::FoodsController < ApplicationController
 
   def destroy
     food_destroyer = FoodDestroyer.new(food_params)
+    food_destroyer.run
     render json: {},
-           status: food_destroyer.run
+           status: food_destroyer.status
   end
 
   private

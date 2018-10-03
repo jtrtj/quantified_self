@@ -1,14 +1,15 @@
 class FoodDestroyer
-  attr_reader :id
+  attr_reader :id, :status
   def initialize(food_params)
     @id = food_params[:id]
+    @status = nil
   end
 
   def run
     if destroy_a_food
-      204
+      @status = 204
     else
-      404
+      @status = 404
     end
   end
 
