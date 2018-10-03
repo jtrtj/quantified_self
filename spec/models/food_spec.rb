@@ -34,6 +34,14 @@ RSpec.describe Food, type: :model do
       expect(new_food.calories).to eq(calories)
       expect(new_food.id).to_not be(nil)
     end
+
+    it '.destroy_a_food(food) - destroys provided food' do
+      food_to_be_destroyed = create(:food)
+      
+      Food.destroy_a_food(food_to_be_destroyed)
+
+      expect(Food.find_by_id(food_to_be_destroyed.id)).to be_nil
+    end
   end
 
   context 'instance methods' do

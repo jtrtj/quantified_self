@@ -16,6 +16,10 @@ class Food < ApplicationRecord
                             calories: calories
                           )
   end
+  
+  def self.destroy_a_food(food)
+    Food.destroy(food.id)
+  end
 
   def update_a_food(new_name, new_calorie_count)
     updated_food = Food.find_by_id(self.id)
