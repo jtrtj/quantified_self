@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 describe MealsPresenter do
-  context 'class methods' do
-    it '.jsonable_array - returns a json object containing all meals and their foods' do
+  context 'instance methods' do
+    it '#jsonable_array - returns a json object containing all meals and their foods' do
       meals = create_list(:meal, 3)
       foods = create_list(:food, 10)
       create_list(:meal_food, 15, meal: meals.sample, food: foods.sample)
       
-      jsonable_array = MealsPresenter.jsonable_array
+      jsonable_array = MealsPresenter.new.jsonable_array
 
       expect(jsonable_array).to be_an(Array)
       expect(jsonable_array.first).to have_key(:id)
