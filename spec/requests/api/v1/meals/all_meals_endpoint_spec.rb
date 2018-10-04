@@ -11,7 +11,6 @@ describe '/api/v1' do
 
       get '/api/v1/meals'
       result = JSON.parse(response.body)
-      # byebug
       
       expect(result).to be_an(Array)
       expect(result.count).to be >= 1
