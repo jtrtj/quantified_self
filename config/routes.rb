@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
       get '/meals', to: 'meals#index'
       get '/meals/:id/foods', to: 'meals#show'
+      post '/meals/:meal_id/foods/:food_id', to: 'meal_foods#create'
     end
   end
 end
