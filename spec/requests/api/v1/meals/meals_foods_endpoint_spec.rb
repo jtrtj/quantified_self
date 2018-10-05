@@ -9,7 +9,7 @@ describe '/api/v1' do
         MealFood.new(meal: meal, food: food)
       end
 
-      get "/api/v1/#{meal.id}/foods"
+      get "/api/v1/meals/#{meal.id}/foods"
       result = JSON.parse(response.body)
 
       expect(result).to have_key("id")
