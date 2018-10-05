@@ -6,7 +6,7 @@ describe '/api/v1' do
       foods = create_list(:food, 3)
       meal = create(:meal)
       foods.each do |food|
-        MealFood.new(meal: meal, food: food)
+        MealFood.create(meal: meal, food: food)
       end
 
       get "/api/v1/meals/#{meal.id}/foods"
@@ -19,6 +19,16 @@ describe '/api/v1' do
       expect(result["foods"][1]).to have_key("id")
       expect(result["foods"][1]).to have_key("name")
       expect(result["foods"][1]).to have_key("calories")
+    end
+
+    it 'returns 404 status if meal does not exist' do
+      nonexistant_meal_id = 456789876
+
+      get "/api/v1/meals/#{nonexistant_meal_id}/foods"
+      result = JSON.parse(response.body)
+
+      expect(status).to eq(404)
+      expect(result["error"]).to eq("meal not found")
     end
   end
 end

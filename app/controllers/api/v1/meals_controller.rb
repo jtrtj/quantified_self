@@ -8,4 +8,10 @@ class Api::V1::MealsController < ApplicationController
     render json:   meal_presenter.jsonable_hash,
            status: meal_presenter.status
   end
+
+  private
+
+  def meal_params
+    params.permit(:id)
+  end
 end
