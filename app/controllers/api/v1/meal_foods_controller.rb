@@ -5,6 +5,11 @@ class Api::V1::MealFoodsController < ApplicationController
            status: meal_food_creator.status
   end
 
+  def destroy
+    meal_food_destroyer = MealFoodDestroyer.new(meal_food_params)
+    render json:   meal_food_destroyer.message,
+           status: meal_food_destroyer.status
+  end
   private
   
   def meal_food_params
