@@ -22,6 +22,6 @@ class MealsPresenter
   private
 
   def fetched_meals
-    Meal.all
+    Meal.includes(:foods).all
   end
 end
