@@ -24,7 +24,8 @@ class Food < ApplicationRecord
   end
 
   def self.times_eaten_counts
-    order(meals_count: :desc)
+    where('meals_count > 1')
+    .order(meals_count: :desc)
     .limit(3)
     .pluck(:meals_count)
   end
