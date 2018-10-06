@@ -25,7 +25,7 @@ describe 'api/v1' do
       expect(result[0]["timesEaten"]).to eq(4)
       expect(result[1]["timesEaten"]).to eq(3)
       expect(result[0]["foods"][0]["name"]).to eq("Banana")
-      expect(result[0]["foods"][0]["mealsWhenEaten"]).to eq(["Breakfast", "Dinner"])
+      expect(result[0]["foods"][0]["mealsWhenEaten"]).to include("Breakfast", "Dinner")
     end
   end
 end
