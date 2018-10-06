@@ -1,7 +1,7 @@
 class FoodDestroyer
   attr_reader :id, :status
   def initialize(food_params)
-    @id = food_params[:id]
+    @id = food_params[:food_id]
     @status = nil
   end
 

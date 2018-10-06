@@ -3,17 +3,17 @@ require 'rails_helper'
 describe FoodPresenter do
   context 'attributes' do
     it 'get a food id from the request params' do
-      food_params = { id: 1 }
+      food_params = { food_id: 1 }
       presenter = FoodPresenter.new(food_params)
 
-      expect(presenter.id).to eq(food_params[:id])
+      expect(presenter.id).to eq(food_params[:food_id])
     end
   end
 
   context 'instance methods' do
     it '#jsonable_hash - returns a hash representing a single food in db' do
       food_1 = create(:food)
-      food_params = {id: "#{food_1.id}"}
+      food_params = {food_id: "#{food_1.id}"}
       presnter = FoodPresenter.new(food_params)
       jsonable_hash = presnter.jsonable_hash
 
@@ -24,13 +24,13 @@ describe FoodPresenter do
 
     it '#status - returns status 200 if food found, 404 if not.' do
       food_1 = create(:food)
-      food_params = {id: "#{food_1.id}"}
+      food_params = {food_id: "#{food_1.id}"}
       presenter = FoodPresenter.new(food_params)
       status = presenter.status
 
       expect(status).to eq(200)
 
-      bad_params = { id: 3456789 }
+      bad_params = { food_id: 3456789 }
       presenter = FoodPresenter.new(bad_params)
       status = presenter.status
 

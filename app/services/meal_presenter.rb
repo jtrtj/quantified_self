@@ -1,6 +1,6 @@
 class MealPresenter
   def initialize(meal_params)
-    @id = meal_params[:id]
+    @id = meal_params[:meal_id]
   end
 
   def jsonable_hash
