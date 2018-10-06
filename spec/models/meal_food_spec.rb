@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe MealFood, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'validations' do
+    it { should belong_to(:meal) } 
+    it { should belong_to(:food).counter_cache(:meals_count) }
+  end
 end
