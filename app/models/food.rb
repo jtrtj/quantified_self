@@ -23,6 +23,12 @@ class Food < ApplicationRecord
     Food.destroy(food.id)
   end
 
+  def self.times_eaten_counts
+    order(meals_count: :desc)
+    .limit(3)
+    .pluck(:meals_count)
+  end
+
   def update_a_food(new_name, new_calorie_count)
     updated_food = Food.find_by_id(self.id)
     updated_food.update(name: new_name, calories: new_calorie_count)

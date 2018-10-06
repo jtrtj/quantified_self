@@ -51,10 +51,11 @@ RSpec.describe Food, type: :model do
       meal_2 = create(:meal)
       meal_3 = create(:meal)
       create_list(:meal_food, 3, meal: meal_1, food: food_1)
+      create_list(:meal_food, 3, meal: meal_1, food: food_2)
       create_list(:meal_food, 2, meal: meal_2, food: food_2)
       create_list(:meal_food, 1, meal: meal_3, food: food_3)
       
-      expect(Food.times_eaten_counts).to eq([3,2,1])
+      expect(Food.times_eaten_counts).to eq([5,3,1])
     end
   end
 
