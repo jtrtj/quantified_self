@@ -19,6 +19,19 @@ describe '/api/v1' do
       food = create(:food)
 
       post "/api/v1/meals/#{non_existant_meal_id}/foods/#{food.id}"
+      result = JSON.parse(response.body)
+
+      expect(status).to eq(404)
+      expect(result["error"]).to eq("meal or food not found")
+
+      non_existant_food_id = 765859750
+      meal = create(:meal)
+
+      post "/api/v1/meals/#{meal.id}/foods/#{non_existant_food_id}"
+      result = JSON.parse(response.body)
+
+      expect(status).to eq(404)
+      expect(result["error"]).to eq("meal or food not found")
     end
   end
 end
