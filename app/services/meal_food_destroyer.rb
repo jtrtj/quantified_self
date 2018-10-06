@@ -8,7 +8,7 @@ class MealFoodDestroyer
     if meal_food
       destroy_meal_food(meal_food)
       {
-        message: "Successfully removed #{food.name} to #{meal.name}"
+        message: "Successfully removed #{food.name} from #{meal.name}"
       }
     else
       {

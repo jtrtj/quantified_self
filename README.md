@@ -104,10 +104,72 @@ This app uses Ruby 2.4.1 and Rails 5.1.6
 > will delete the food at the id provided
 >
 > Returns `status: 204`
+### Favorite Foods endpoint
+> __GET /api/v1/favorite_foods__
+>
+> This is the most complex endpoint. This data represents the foods that have been eaten the most times and which meals they are eaten during. If a meal has only been eaten once, it will not be included. In the database the join table between meals and foods is counter cached onto a column on each food called 'meals_count'. This way each food knows how many times it has been eaten. Only the top three counts of times eaten are included.
 
+```json
+[
+    {
+        "timesEaten": 4,
+        "foods": [
+            {
+                "name": "Vegetable Soup",
+                "calories": 895,
+                "mealsWhenEaten": [
+                    "Breakfast",
+                    "Dinner",
+                    "Lunch"
+                ]
+            }
+        ]
+    },
+    {
+        "timesEaten": 3,
+        "foods": [
+            {
+                "name": "Cheeseburger",
+                "calories": 111,
+                "mealsWhenEaten": [
+                    "Breakfast",
+                    "Dinner"
+                ]
+            }
+        ]
+    },
+    {
+        "timesEaten": 2,
+        "foods": [
+            {
+                "name": "Pizza",
+                "calories": 556,
+                "mealsWhenEaten": [
+                    "Breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "name": "Chicken Wings",
+                "calories": 126,
+                "mealsWhenEaten": [
+                    "Breakfast"
+                ]
+            },
+            {
+                "name": "Teriyaki Chicken Donburi",
+                "calories": 962,
+                "mealsWhenEaten": [
+                    "Dinner"
+                ]
+            }
+        ]
+    }
+]
+```
 ### Meal endpoints
 
-> GET /api/v1/meals
+> __GET /api/v1/meals__
 >
 > Returns all the meals in the database along with their associated foods
 
@@ -203,3 +265,44 @@ This app uses Ruby 2.4.1 and Rails 5.1.6
     }
 ]
 ```
+> __GET /api/v1/meals/:meal_id/foods__
+>
+> Returns a json object of a single meal with all of its eaten foods
+
+```json
+{
+    "id": 1,
+    "name": "Breakfast",
+    "foods": [
+        {
+            "id": 7,
+            "name": "Chicken Wings",
+            "calories": 126
+        },
+        {
+            "id": 3,
+            "name": "Vegetable Soup",
+            "calories": 895
+        }
+    ]
+}
+```
+> __POST /api/v1/meals/:meal_id/foods/:food_id__
+> 
+> Adds the specified food to the specified meal and returns a success message
+
+```json
+{
+  "message": "Successfully added XXXtra Flamin' Hot Cheetos to Breakfast"
+}
+```
+> __DELETE /api/v1/meals/:meal_id/foods/:food_id__
+>
+> Removes the specified food from the specified meal and returns a success message"
+
+```json
+{
+  "messsage": "Successfully removed Yogurt from Breakfast"
+}
+```
+
