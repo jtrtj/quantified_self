@@ -24,8 +24,11 @@ describe 'api/v1' do
       expect(result).to be_an(Array)
       expect(result[0]["timesEaten"]).to eq(4)
       expect(result[1]["timesEaten"]).to eq(3)
-      expect(result[0]["foods"][0]["name"]).to eq("Banana")
-      expect(result[0]["foods"][0]["mealsWhenEaten"]).to include("Breakfast", "Dinner")
+      expect(result[0]["foods"].count).to eq(1)
+      expect(result[0]["foods"][0]).to have_key("name")
+      expect(result[0]["foods"][0]).to have_key("calories")
+      expect(result[0]["foods"][0]["mealsWhenEaten"].count).to eq(2)
+      expect(result[1]["foods"].count).to eq(2)
     end
   end
 end

@@ -27,7 +27,7 @@ class Food < ApplicationRecord
     where('meals_count > 1')
     .order(meals_count: :desc)
     .limit(3)
-    .pluck(:meals_count)
+    .distinct.pluck(:meals_count)
   end
 
   def update_a_food(new_name, new_calorie_count)
