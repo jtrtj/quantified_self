@@ -9,7 +9,7 @@ describe '/api/v1' do
         MealFood.create(meal: meal, food: food)
       end
       food_to_delete = foods.first
-      expected_result = "Successfully removed #{food_to_delete.name} to #{meal.name}"
+      expected_result = "Successfully removed #{food_to_delete.name} from #{meal.name}"
 
       delete "/api/v1/meals/#{meal.id}/foods/#{food_to_delete.id}"
       result = JSON.parse(response.body)
