@@ -10,10 +10,11 @@ describe '/api/v1' do
       end
       food_to_delete = foods.first
       expected_result = "Successfully removed #{food_to_delete.name} to #{meal.name}"
-      
+
       delete "/api/v1/meals/#{meal.id}/foods/#{food_to_delete.id}"
       result = JSON.parse(response.body)
 
+      expect(meal.foods).not_to include(food_to_delete)
       expect(status).to eq(200)
       expect(result["message"]).to eq(expected_result)
     end
