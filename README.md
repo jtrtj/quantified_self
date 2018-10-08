@@ -6,7 +6,7 @@ This Rails API provides endpoints for a calorie tracking app.
 
 A user of the api can keep track of what foods were eaten with each meal throughout the day.
 
-Quantified Self is deployed [Here](https://jtrtj-quantified-self.herokuapp.com)
+Quantified Self is deployed [Here](https://jtrtj-quantified-self.herokuapp.com/api/v1/favorite_foods)
 
 ---
 
