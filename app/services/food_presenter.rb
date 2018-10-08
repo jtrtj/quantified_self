@@ -1,7 +1,7 @@
 class FoodPresenter
   attr_reader :id
   def initialize(food_params)
-    @id = food_params[:id]
+    @id = food_params[:food_id]
   end
 
   def jsonable_hash
